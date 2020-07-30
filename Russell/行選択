@@ -1,0 +1,9 @@
+import pandas as pd
+import csv
+
+N = 50#N行目以降の要素を抽出する（抽出する行をここで指定）
+df = pd.read_csv("0730.csv")
+#df2 = df.iloc[64:70,2:4]#64~69行目、2~4列目までの要素を抽出
+df2 = df.iloc[N:]
+
+print(df2)
