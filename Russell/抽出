@@ -1,0 +1,23 @@
+import pandas as pd
+import csv
+
+list = []
+
+
+csv_file = open("./0730.csv", "r", encoding="ms932", errors="", newline="" )
+
+f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
+
+for row in f:
+          
+    S = row
+    S2 = S[3]
+    #print(S2[3])
+    list.append(S2)
+print(list)
+
+n = 0
+
+while list[n] < 50:
+    n += 1
+    print(n)
