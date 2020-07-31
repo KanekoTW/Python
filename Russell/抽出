@@ -6,7 +6,7 @@ list2 = []
 c = 0
 
 #開始秒の設定
-N = 1 
+N = 30 
 
 
 csv_file = open("./0730.csv", "r", encoding="ms932", errors="", newline="" )
@@ -25,4 +25,5 @@ nl = list(map(float, list2))
 
 while nl[c] < N:
     c+= 1
-print(c)
+    
+print(c)#c = 設定した開始秒の行数
