@@ -15,12 +15,13 @@ for row in f:
     #print(S2[3])
     list2.append(S2)
 
-n = 0
+c = 0
+N = 3 #開始秒の設定
 
 nl = list(map(float, list2))
 
-L = nl[n]
+L = nl[c]
 
-while L < 30:
+while L < N:
     n += 1
-print(n)
+print(c)
