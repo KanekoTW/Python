@@ -1,7 +1,7 @@
 import pandas as pd
 import csv
 
-list = []
+list2 = []
 
 
 csv_file = open("./0730.csv", "r", encoding="ms932", errors="", newline="" )
@@ -13,11 +13,14 @@ for row in f:
     S = row
     S2 = S[3]
     #print(S2[3])
-    list.append(S2)
-print(list)
+    list2.append(S2)
 
 n = 0
 
-while list[n] < 50:
+nl = list(map(float, list2))
+
+L = nl[n]
+
+while L < 30:
     n += 1
-    print(n)
+print(n)
