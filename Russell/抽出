@@ -16,12 +16,11 @@ for row in f:
     list2.append(S2)
 
 c = 0
-N = 3 #開始秒の設定
+N = 1 #開始秒の設定
 
 nl = list(map(float, list2))
 
-L = nl[c]
 
-while L < N:
-     += 1
+while nl[c] < N:
+    c+= 1
 print(c)
