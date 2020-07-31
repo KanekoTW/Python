@@ -23,5 +23,5 @@ nl = list(map(float, list2))
 L = nl[c]
 
 while L < N:
-    n += 1
+     += 1
 print(c)
