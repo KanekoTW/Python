@@ -18,14 +18,13 @@ def getTextInput():
     
     M = (float(result))#GUIで入力された数字を文字列から数値に変換して変数に代入
 
-
     list2 = []#経過時間取り出し用のリスト
     listS = []#　用のリスト
 
     c = 0#指定秒以降でループさせるために使用するカウンター
 
 #開始秒の設定
-    N = M　#変数に変数を代入しているが、GUIを使用しない場合はここに直接数値を入力することで対応させるため
+    N = M#変数に変数を代入しているが、GUIを使用しない場合はここに直接数値を入力することで対応させるため
 
 #CSVファイルの読み込み
     csv_file = open("./0730.csv", "r", encoding="ms932", errors="", newline="" )
@@ -39,9 +38,8 @@ def getTextInput():
 
     nl = list(map(float, list2))#文字列から数値に変換
 
-    while nl[c] < N:　#指定秒以降のデータで処理を行わせるためのwhile文
+    while nl[c] < N:#指定秒以降のデータで処理を行わせるためのwhile文
            c+= 1
-
 
     def realtime_graph(x, y):
         line, = plt.plot(x, y, "ro", label="y=x")  # (x,y)のプロット
@@ -77,7 +75,6 @@ def getTextInput():
     (x, y) = (0, 0)     # 初期値
     plt.ion()           # インタラクティブモードオン
 
-
 #指定開始秒からCSVファイルで読み込む
     with open('0730.csv') as f:
         reader = csv.reader(f)
@@ -85,23 +82,19 @@ def getTextInput():
 
     D = l[c:]#CSVファイルから読み取るデータをカウンターの数から指定
 
-    youso = sum([1 for _ in open('0730.csv')])#ループ処理時無限ループ(エラー)発生対策
-
     K = 0#取り出す行指定用変数
-
-    for i in range(youso - c -1):#(全行数-指定秒行目-1)
+    for i in D:#(全行数-指定秒行目-1)
         K += 1
     
-        Sx = D[K][0]
-        Sy = D[K][1]
-        z = D[K][2]
-        t = D[K][3]
+        Sx = i[0]
+        Sy = i[1]
+        z = i[2]
+        t = i[3]
         
         #描画用数値
         realtime_graph(x, y)
         x = (float(Sx))#文字列から数値に変換
         y = (float(Sy))#文字列から数値に変換
-
 
 label = tk.Label(root, text="0~59.9の数字を半角で入力")
 label.pack() 
