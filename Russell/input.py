@@ -7,7 +7,7 @@ import datetime
 import csv
 import pandas as pd
 
-
+#開始秒指定用のGUI
 root = tk.Tk()
 root.geometry("200x100")
 root.title("開始秒指定")
@@ -16,33 +16,31 @@ def getTextInput():
     result=textExample.get("1.0","end")#ここに入力された値が
     print(result)
     
-    M = (float(result))
+    M = (float(result))#GUIで入力された数字を文字列から数値に変換して変数に代入
 
 
-    list2 = []
-    listS = []
+    list2 = []#経過時間取り出し用のリスト
+    listS = []#　用のリスト
 
-    c = 0
+    c = 0#指定秒以降でループさせるために使用するカウンター
 
 #開始秒の設定
-    N = M
+    N = M　#変数に変数を代入しているが、GUIを使用しない場合はここに直接数値を入力することで対応させるため
 
-
+#CSVファイルの読み込み
     csv_file = open("./0730.csv", "r", encoding="ms932", errors="", newline="" )
-
     f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
 
     for row in f:
           
-        S = row
-        S2 = S[3]
-        #print(S2[3])
-        list2.append(S2)    
+        S = row#CSVファイル全データ(X値、Y値、出力時刻、経過時間)
+        S2 = S[3]#経過時間のみを代入
+        list2.append(S2)#経過時間の要素だけでリストを再編成
 
-    nl = list(map(float, list2))
+    nl = list(map(float, list2))#文字列から数値に変換
 
-    while nl[c] < N:
-           c+= 1#c = 設定した開始秒の行数
+    while nl[c] < N:　#指定秒以降のデータで処理を行わせるためのwhile文
+           c+= 1
 
 
     def realtime_graph(x, y):
@@ -52,9 +50,8 @@ def getTextInput():
         plt.ylabel("非覚醒/覚醒", fontname="MS Gothic", fontsize=20)     # y軸ラベル
         plt.gca().set_aspect('equal', adjustable='box') #正方形に固定
         plt.grid()          # グリッド表示
-        z = Sz
-        t = St
-    
+        
+        #出用時刻、経過時間描画
         boxdic = {
             "facecolor" : "lightgreen",
             "edgecolor" : "darkred",
@@ -70,6 +67,7 @@ def getTextInput():
         plt.pause(0.01)     #処理時間
         plt.clf()  # 画面初期化
     
+    #グラフ内円描画用
         a,b= [],[]
         for j in np.linspace(0, 2 * np.pi, 1000):
                 a.append(math.sin(j)*990)#円の大きさ変更
@@ -80,24 +78,24 @@ def getTextInput():
     plt.ion()           # インタラクティブモードオン
 
 
-
+#指定開始秒からCSVファイルで読み込む
     with open('0730.csv') as f:
         reader = csv.reader(f)
         l = [row for row in reader]
 
-    D = l[c:]
+    D = l[c:]#CSVファイルから読み取るデータをカウンターの数から指定
 
-    youso = sum([1 for _ in open('0730.csv')])
+    youso = sum([1 for _ in open('0730.csv')])#ループ処理時無限ループ(エラー)発生対策
 
-    K = 0
+    K = 0#取り出す行指定用変数
 
-    for i in range(youso - c -1):
+    for i in range(youso - c -1):#(全行数-指定秒行目-1)
         K += 1
     
         Sx = D[K][0]
         Sy = D[K][1]
-        Sz = D[K][2]
-        St = D[K][3]
+        z = D[K][2]
+        t = D[K][3]
 
         realtime_graph(x, y)
         x = (float(Sx))
