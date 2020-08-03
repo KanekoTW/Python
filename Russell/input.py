@@ -96,10 +96,11 @@ def getTextInput():
         Sy = D[K][1]
         z = D[K][2]
         t = D[K][3]
-
+        
+        #描画用数値
         realtime_graph(x, y)
-        x = (float(Sx))
-        y = (float(Sy))
+        x = (float(Sx))#文字列から数値に変換
+        y = (float(Sy))#文字列から数値に変換
 
 
 label = tk.Label(root, text="0~59.9の数字を半角で入力")
@@ -107,7 +108,7 @@ label.pack()
 
 textExample=tk.Text(root, height=1)
 textExample.pack()
-btnRead=tk.Button(root, height=1, width=10, text="Read", 
+btnRead=tk.Button(root, height=1, width=10, text="Start", 
                     command=getTextInput)
 
 btnRead.pack()
