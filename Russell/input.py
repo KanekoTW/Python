@@ -13,7 +13,7 @@ root.geometry("200x100")
 root.title("開始秒指定")
 
 def getTextInput():
-    result=textExample.get("1.0","end")#ここに入力された値が
+    result=textExample.get("1.0","end")#ここに入力された値が代入される
     print(result)
     
     M = (float(result))#GUIで入力された数字を文字列から数値に変換して変数に代入
