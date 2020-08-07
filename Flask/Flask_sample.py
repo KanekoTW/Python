@@ -11,13 +11,15 @@ import numpy as np
 
 app = Flask(__name__)
 
-fig = plt.figure()
-ax = fig.add_subplot()
+fig = plt.figure()#　クラスのインスタンス化
+ax = fig.add_subplot()#　オブジェクト作成
 
+#  x、yの値を設定
 x = np.arange(0,100,0.1)
 y = x**2
 
 @app.route('/')
+#グラフを作成
 def index():
   plt.cla()
 
@@ -29,12 +31,12 @@ def index():
   plt.plot(x, y)
   
 
-  canvas = FigureCanvasAgg(fig)
-  png_output = BytesIO()
+  canvas = FigureCanvasAgg(fig)#　画像を出力
+  png_output = BytesIO()#　仮想的にメモリに書き出し
   canvas.print_png(png_output)
-  data = png_output.getvalue()
+  data = png_output.getvalue()#　Date＝画像データ
 
-  response = make_response(data)
+  response = make_response(data)#　Dateをレスポンス(response)で生成
   response.headers['Content-Type'] = 'image/png'
  
 
