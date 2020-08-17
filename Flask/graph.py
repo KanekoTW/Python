@@ -4,7 +4,6 @@ import urllib
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
-
 import random
 import numpy as np
 
